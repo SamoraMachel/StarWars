@@ -10,7 +10,6 @@ import com.example.starwars.data.remote.models.StarshipNetwork
 import com.example.starwars.data.remote.responses.BaseResponse
 import retrofit2.HttpException
 import java.io.IOException
-import kotlin.reflect.typeOf
 
 enum class ApiClass {
     PEOPLE_API,
@@ -30,8 +29,8 @@ class BasePagingSource<T : Any>(private val apiClass: ApiClass, private val apiS
     }
 
     private fun networkDataMapper(networkData : Any) = when(apiClass) {
-        ApiClass.PEOPLE_API -> NetworkMapper.PeopleNetworkMapper(networkData as PeopleNetwork)
-        ApiClass.STARSHIP_API -> NetworkMapper.StarshipNeworkMapper(networkData as StarshipNetwork)
+        ApiClass.PEOPLE_API -> NetworkMapper.peopleNetworkMapper(networkData as PeopleNetwork)
+        ApiClass.STARSHIP_API -> NetworkMapper.starshipNetworkMapper(networkData as StarshipNetwork)
     }
 
     override fun getRefreshKey(state: PagingState<Int, T>): Int? {

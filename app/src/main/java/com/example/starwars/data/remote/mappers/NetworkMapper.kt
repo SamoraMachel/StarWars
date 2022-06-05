@@ -46,7 +46,7 @@ fun StarshipNetwork.toDomain() : Starship {
 
 class NetworkMapper {
     companion object {
-        fun PeopleNetworkMapper(peopleNetwork: PeopleNetwork) : People {
+        fun peopleNetworkMapper(peopleNetwork: PeopleNetwork) : People {
             return People(
                 peopleNetwork.birthYear,
                 peopleNetwork.eyeColor,
@@ -63,7 +63,7 @@ class NetworkMapper {
                 peopleNetwork.vehicles
             )
         }
-        fun StarshipNeworkMapper(starshipNetwork: StarshipNetwork) : Starship{
+        fun starshipNetworkMapper(starshipNetwork: StarshipNetwork) : Starship{
             return Starship(
                 starshipNetwork.MGLT.toInt(),
                 starshipNetwork.cargoCapacity.toInt(),
