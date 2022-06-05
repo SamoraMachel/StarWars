@@ -4,22 +4,19 @@ import androidx.annotation.Nullable
 
 data class Starship(
     val mglt: Int,
-    val cargo_capacity: Int,
+    val cargoCapacity: Int,
     val consumables: String,
-    val cost_in_credits: Int,
-    val created: String,
+    val costInCredits: Int,
     val crew: String,
-    val edited: String,
     val films: List<String>,
-    val hyperdrive_rating: Double,
+    val hyperDriveRating: Double,
     val length: Int,
     val manufacturer: String,
-    val max_atmosphering_speed: Int,
+    val maxAtmospheringSpeed: Int,
     val model: String,
     val name: String,
     val passengers: Int,
     @Nullable
     val pilots: List<String?>?,
-    val starship_class: String,
-    val url: String
+    val starshipClass: String,
 )
