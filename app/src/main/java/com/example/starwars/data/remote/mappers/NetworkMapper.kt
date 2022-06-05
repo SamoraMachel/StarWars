@@ -43,3 +43,45 @@ fun StarshipNetwork.toDomain() : Starship {
         starshipClass
     )
 }
+
+class NetworkMapper {
+    companion object {
+        fun PeopleNetworkMapper(peopleNetwork: PeopleNetwork) : People {
+            return People(
+                peopleNetwork.birthYear,
+                peopleNetwork.eyeColor,
+                peopleNetwork.films,
+                peopleNetwork.gender,
+                peopleNetwork.hairColor,
+                peopleNetwork.height,
+                peopleNetwork.homeWorld,
+                peopleNetwork.mass,
+                peopleNetwork.name,
+                peopleNetwork.skinColor,
+                peopleNetwork.species as List<String?>,
+                peopleNetwork.starships,
+                peopleNetwork.vehicles
+            )
+        }
+        fun StarshipNeworkMapper(starshipNetwork: StarshipNetwork) : Starship{
+            return Starship(
+                starshipNetwork.MGLT.toInt(),
+                starshipNetwork.cargoCapacity.toInt(),
+                starshipNetwork.consumables,
+                starshipNetwork.costInCredits.toInt(),
+                starshipNetwork.crew,
+                starshipNetwork.films,
+                starshipNetwork.hyperDriveRating.toDouble(),
+                starshipNetwork.length.toInt(),
+                starshipNetwork.manufacturer,
+                starshipNetwork.maxAtmospheringSpeed.toInt(),
+                starshipNetwork.model,
+                starshipNetwork.name,
+                starshipNetwork.passengers.toInt(),
+                starshipNetwork.pilots as List<String?>,
+                starshipNetwork.starshipClass
+            )
+        }
+    }
+
+}
