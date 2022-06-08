@@ -7,7 +7,7 @@ import com.example.starwars.domain.models.Starship
 
 class PresentationMapper {
     companion object {
-        fun peoplePresentationMapper(peoplePresentation : PeoplePresentation) : People {
+        fun peopleDomainMapper(peoplePresentation : PeoplePresentation) : People {
             return People(
                 peoplePresentation.birthYear,
                 peoplePresentation.eyeColor,
@@ -25,7 +25,25 @@ class PresentationMapper {
             )
         }
 
-        fun starshipPresentationMapper(starshipPresentation : StarshipPresentation) : Starship {
+        fun peoplePresentationMapper(peopleDomain : People) : PeoplePresentation {
+            return PeoplePresentation(
+                peopleDomain.birthYear,
+                peopleDomain.eyeColor,
+                peopleDomain.films,
+                peopleDomain.gender,
+                peopleDomain.hairColor,
+                peopleDomain.height,
+                peopleDomain.homeWorld,
+                peopleDomain.mass,
+                peopleDomain.name,
+                peopleDomain.skinColor,
+                peopleDomain.species as List<String?>,
+                peopleDomain.starships,
+                peopleDomain.vehicles
+            )
+        }
+
+        fun starshipDomainMapper(starshipPresentation : StarshipPresentation) : Starship {
             return Starship(
                 starshipPresentation.mglt.toInt(),
                 starshipPresentation.cargoCapacity.toInt(),

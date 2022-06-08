@@ -12,7 +12,7 @@ import com.example.starwars.domain.models.People
 import com.example.starwars.domain.repository.PeopleRepository
 import kotlinx.coroutines.flow.Flow
 
-class PeopleRepositoryImpl(private val peopleApi: PeopleApi) : PeopleRepository {
+class PeopleRepositoryImpl() : PeopleRepository {
 
     override fun fetchPeople(): Flow<PagingData<People>> {
         val peopleApiService : PeopleApi = buildRetrofitService(PeopleApi::class.java)

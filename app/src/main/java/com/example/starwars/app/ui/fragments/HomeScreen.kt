@@ -5,11 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.starwars.R
 import com.example.starwars.app.ui.adapters.HomeScreenAdapter
+import com.example.starwars.app.ui.viewmodels.HomeScreenViewModel
+import com.example.starwars.app.utils.Resource
+import com.example.starwars.app.utils.Status
 import com.example.starwars.databinding.FragmentHomeScreenBinding
+import kotlinx.coroutines.flow.collect
 
 
 class HomeScreen : Fragment() {
@@ -26,6 +32,9 @@ class HomeScreen : Fragment() {
         //binding
         val binding = FragmentHomeScreenBinding.inflate(layoutInflater)
 
+        // view model
+        val homeViewModel = ViewModelProvider(this).get(HomeScreenViewModel::class.java)
+
         Glide.with(requireContext())
             .load("https://images.unsplash.com/photo-1586136194012-35ceaddbd773?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80")
             .circleCrop()
@@ -34,6 +43,16 @@ class HomeScreen : Fragment() {
         val homeAdapter = HomeScreenAdapter()
         binding.characterRecyclerView.adapter = homeAdapter
         binding.characterRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+
+        lifecycleScope.launchWhenStarted {
+            homeViewModel.characterDataList.collect { resourceState ->
+                when(resourceState.status) {
+                    Status.SUCCESS -> {}
+                    Status.LOADING -> {}
+                    Status.ERROR -> {}
+                }
+            }
+        }
 
         return binding.root
     }
