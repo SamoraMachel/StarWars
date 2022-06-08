@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.example.starwars.R
+import com.example.starwars.databinding.FragmentHomeScreenBinding
 
 
 class HomeScreen : Fragment() {
@@ -17,9 +19,18 @@ class HomeScreen : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_screen, container, false)
+        //binding
+        val binding = FragmentHomeScreenBinding.inflate(layoutInflater)
+
+        Glide.with(requireContext())
+            .load("https://images.unsplash.com/photo-1586136194012-35ceaddbd773?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80")
+            .circleCrop()
+            .into(binding.userProfileImage)
+
+
+        return binding.root
     }
 
 

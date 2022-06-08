@@ -37,10 +37,12 @@
             android:textSize="20sp" />
 
         <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="70dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:id="@+id/user_profile_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_weight="0"
+            android:scaleType="centerCrop"
             tools:src="@tools:sample/avatars" />
 
     </LinearLayout>
@@ -62,6 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/user_search_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint=" Search Character"
@@ -69,13 +72,17 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/character_recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        tools:itemCount="1"
+        tools:listitem="@layout/character_card" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
