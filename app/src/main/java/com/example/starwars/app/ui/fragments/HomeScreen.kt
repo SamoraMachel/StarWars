@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,11 +46,24 @@ class HomeScreen : Fragment() {
         binding.characterRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
         lifecycleScope.launchWhenStarted {
+
             homeViewModel.characterDataList.collect { resourceState ->
                 when(resourceState.status) {
-                    Status.SUCCESS -> {}
-                    Status.LOADING -> {}
-                    Status.ERROR -> {}
+                    Status.SUCCESS -> {
+                        binding.progressBar.visibility = View.GONE
+                        resourceState.data?.let {
+                            homeAdapter.submitData(it)
+                        }
+                        Toast.makeText(requireContext(), "Success", Toast.LENGTH_LONG).show()
+                    }
+                    Status.LOADING -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                        Toast.makeText(requireContext(), "loading", Toast.LENGTH_LONG).show()
+                    }
+                    Status.ERROR -> {
+                        binding.progressBar.visibility = View.GONE
+                        Toast.makeText(requireContext(), "error", Toast.LENGTH_LONG).show()
+                    }
                 }
             }
         }

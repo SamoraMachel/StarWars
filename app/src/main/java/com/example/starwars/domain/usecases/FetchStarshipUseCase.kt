@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 typealias FetchStarshipBaseUseCase = BaseUseCase<Flow<PagingData<Starship>>>
 
 class FetchStarshipUseCase constructor(private val starshipRepository: StarshipRepository) : FetchStarshipBaseUseCase {
-    override fun execute(): Flow<PagingData<Starship>> {
+    override suspend fun execute(): Flow<PagingData<Starship>> {
         return starshipRepository.fetchStarships()
     }
 }

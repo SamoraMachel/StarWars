@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 class HomeScreenViewModel : ViewModel(){
 
     // Data variables
-    private val mutableCharacterDataList = MutableStateFlow<Resource<PagingData<PeoplePresentation>>>(Resource.success(null))
+    private val mutableCharacterDataList = MutableStateFlow<Resource<PagingData<PeoplePresentation>>>(Resource.loading(null))
     val characterDataList : StateFlow<Resource<PagingData<PeoplePresentation>>>
         get() = mutableCharacterDataList.asStateFlow()
 
@@ -24,10 +24,10 @@ class HomeScreenViewModel : ViewModel(){
         fetchPeopleData()
     }
 
-    // repositories
-    private val peopleRepository = PeopleRepositoryImpl()
 
     private fun fetchPeopleData() = viewModelScope.launch {
+        val peopleRepository = PeopleRepositoryImpl()
+
         mutableCharacterDataList.emit(Resource.loading(null))
         FetchPeopleUseCase(peopleRepository).execute().map { pagingData ->
             pagingData.map { people ->

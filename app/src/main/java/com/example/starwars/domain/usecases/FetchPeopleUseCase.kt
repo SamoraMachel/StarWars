@@ -9,7 +9,7 @@ typealias FetchPeopleBaseUseCase = BaseUseCase<Flow<PagingData<People>>>
 
 class FetchPeopleUseCase constructor(private val peopleRepository: PeopleRepository) :
     FetchPeopleBaseUseCase {
-    override fun execute(): Flow<PagingData<People>> {
+    override suspend fun execute(): Flow<PagingData<People>> {
         return peopleRepository.fetchPeople()
     }
 
