@@ -1,4 +1,6 @@
 package com.example.starwars.app.ui.viewmodels
 
-class HomeScreenViewModel {
+import androidx.lifecycle.ViewModel
+
+class HomeScreenViewModel : ViewModel(){
 }
