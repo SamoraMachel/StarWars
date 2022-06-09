@@ -1,6 +1,7 @@
 package com.example.starwars.app.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -48,6 +49,7 @@ class HomeScreen : Fragment() {
         lifecycleScope.launchWhenStarted {
 
             homeViewModel.characterDataList.collect { resourceState ->
+                Log.d("HomeScreenDataList", "onCreateView: ${resourceState.status} ${resourceState.data} ")
                 when(resourceState.status) {
                     Status.SUCCESS -> {
                         binding.progressBar.visibility = View.GONE

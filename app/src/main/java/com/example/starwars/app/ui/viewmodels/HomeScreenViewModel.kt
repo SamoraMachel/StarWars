@@ -1,5 +1,6 @@
 package com.example.starwars.app.ui.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -34,6 +35,7 @@ class HomeScreenViewModel : ViewModel(){
                 PresentationMapper.peoplePresentationMapper(people)
             }
         }.cachedIn(this).collect {
+            Log.d("fetchPeopleFunctionVM", "fetchPeopleData: Data emitted to state flow")
             mutableCharacterDataList.emit(Resource.success(it))
         }
     }
