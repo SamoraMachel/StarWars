@@ -31,8 +31,8 @@ class HomeScreenViewModel : ViewModel(){
 
         mutableCharacterDataList.emit(Resource.loading(null))
         FetchPeopleUseCase(peopleRepository).execute().map { pagingData ->
-            pagingData.map { people ->
-                PresentationMapper.peoplePresentationMapper(people)
+            pagingData.map { peopleNetwork ->
+                PresentationMapper.peoplePresentationMapper(peopleNetwork)
             }
         }.cachedIn(this).collect {
             Log.d("fetchPeopleFunctionVM", "fetchPeopleData: Data emitted to state flow")

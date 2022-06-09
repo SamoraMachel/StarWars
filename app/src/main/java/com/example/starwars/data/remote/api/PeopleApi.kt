@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface PeopleApi {
-    @GET("/people")
+    @GET("people")
     suspend fun fetchPeople(@Query("page") page : Int) : BaseResponse<PeopleNetwork>
 }

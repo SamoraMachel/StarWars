@@ -1,5 +1,6 @@
 package com.example.starwars.data.remote.pagingsource
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.starwars.data.remote.api.PeopleApi
@@ -8,6 +9,7 @@ import com.example.starwars.data.remote.mappers.NetworkMapper
 import com.example.starwars.data.remote.models.PeopleNetwork
 import com.example.starwars.data.remote.models.StarshipNetwork
 import com.example.starwars.data.remote.responses.BaseResponse
+import com.example.starwars.domain.models.People
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -28,7 +30,7 @@ class BasePagingSource<T : Any>(private val apiClass: ApiClass, private val apiS
         }
     }
 
-    private fun networkDataMapper(networkData : Any) = when(apiClass) {
+    private fun networkDataMapper(networkData : Any?) = when(apiClass) {
         ApiClass.PEOPLE_API -> NetworkMapper.peopleNetworkMapper(networkData as PeopleNetwork)
         ApiClass.STARSHIP_API -> NetworkMapper.starshipNetworkMapper(networkData as StarshipNetwork)
     }
@@ -42,11 +44,9 @@ class BasePagingSource<T : Any>(private val apiClass: ApiClass, private val apiS
 
         return try {
             val response = dataApiResponse(position)
-            val dataList : List<T> = response.result.map { networkData ->
-                networkData?.let {
-                    networkDataMapper(it)
-                }
-                networkData as T
+            Log.d("PagingSource", "load: Data Loaded ${response.results}")
+            val dataList : List<T> = response.results.map { networkData ->
+                networkDataMapper(networkData) as T
             }
 
             val nextKey = if(dataList.isEmpty()) {
