@@ -5,10 +5,10 @@ import com.example.starwars.domain.repository.FilmRepository
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
-private typealias  fetchSpecificFilmBase = BaseUseCase<Flow<Film>>
+private typealias  fetchSpecificFilmBase = DataBaseCase<String, Flow<Film>>
 
 class FetchSpecificFilmUseCase(private val filmRepository: FilmRepository) : fetchSpecificFilmBase {
-    override suspend fun execute(): Flow<Film> {
-        return filmRepository.fetchSpecificFilm()
+    override suspend fun execute(params : String): Flow<Film> {
+        return filmRepository.fetchSpecificFilm(params)
     }
 }

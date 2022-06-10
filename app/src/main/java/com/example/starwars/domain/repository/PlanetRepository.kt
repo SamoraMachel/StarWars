@@ -4,5 +4,5 @@ import com.example.starwars.domain.models.Planet
 import kotlinx.coroutines.flow.Flow
 
 interface PlanetRepository {
-    fun fetchPlanet() : Flow<Planet>
+    fun fetchPlanet(url : String) : Flow<Planet>
 }

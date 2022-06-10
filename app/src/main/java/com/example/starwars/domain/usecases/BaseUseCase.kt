@@ -1,5 +1,5 @@
 package com.example.starwars.domain.usecases
 
-interface BaseUseCase<T> {
+interface BaseUseCase<out T> {
     suspend fun execute() : T
 }
