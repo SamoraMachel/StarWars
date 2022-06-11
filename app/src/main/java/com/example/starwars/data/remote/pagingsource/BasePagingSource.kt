@@ -18,11 +18,15 @@ enum class ApiClass {
     STARSHIP_API
 }
 
-class BasePagingSource<T : Any>(private val apiClass: ApiClass, private val apiService : Any) : PagingSource<Int, T>()  {
+class BasePagingSource<T : Any>(private val apiClass: ApiClass, private val apiService : Any, private val searchValue : String? = null) : PagingSource<Int, T>()  {
     private suspend fun dataApiResponse(page : Int) : BaseResponse<*> = when(apiClass) {
         ApiClass.PEOPLE_API -> {
             val api = apiService as PeopleApi
-            api.fetchPeople(page)
+            if (searchValue != null) {
+                api.searchPeople(page, searchValue)
+            } else {
+                api.fetchPeople(page)
+            }
         }
         ApiClass.STARSHIP_API -> {
             val api  = apiService as StarshipApi

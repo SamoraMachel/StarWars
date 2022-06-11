@@ -8,4 +8,7 @@ import retrofit2.http.Query
 interface PeopleApi {
     @GET("people")
     suspend fun fetchPeople(@Query("page") page : Int) : BaseResponse<PeopleNetwork>
+
+    @GET("people")
+    suspend fun searchPeople(@Query("page") page : Int, @Query("search") search : String) : BaseResponse<PeopleNetwork>
 }

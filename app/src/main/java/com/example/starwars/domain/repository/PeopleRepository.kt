@@ -7,4 +7,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface PeopleRepository {
     fun fetchPeople() : Flow<PagingData<People>>
+
+    fun searchPeople(search : String) : Flow<PagingData<People>>
 }

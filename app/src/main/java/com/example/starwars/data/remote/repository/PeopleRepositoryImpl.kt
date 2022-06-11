@@ -23,4 +23,14 @@ class PeopleRepositoryImpl() : PeopleRepository {
             pagingSourceFactory = {peoplePagingData}
         ).flow
     }
+
+    override fun searchPeople(search: String): Flow<PagingData<People>> {
+        val peopleApiService : PeopleApi = buildRetrofitService(PeopleApi::class.java)
+        val peoplePagingData: BasePagingSource<People> = BasePagingSource(ApiClass.PEOPLE_API, peopleApiService, search)
+
+        return Pager(
+            config = PagingConfig(10),
+            pagingSourceFactory = {peoplePagingData}
+        ).flow
+    }
 }

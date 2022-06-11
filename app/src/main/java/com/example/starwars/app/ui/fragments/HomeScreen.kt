@@ -2,6 +2,7 @@ package com.example.starwars.app.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import com.example.starwars.app.ui.viewmodels.HomeScreenViewModel
 import com.example.starwars.app.utils.Resource
 import com.example.starwars.app.utils.Status
 import com.example.starwars.databinding.FragmentHomeScreenBinding
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.flow.collect
 
 
@@ -46,32 +48,46 @@ class HomeScreen : Fragment() {
         binding.characterRecyclerView.adapter = homeAdapter
         binding.characterRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-        lifecycleScope.launchWhenStarted {
-
+        suspend fun collectData() {
             homeViewModel.characterDataList.collect { resourceState ->
-                Log.d("HomeScreenDataList", "onCreateView: ${resourceState.status} ${resourceState.data} ")
                 when(resourceState.status) {
                     Status.SUCCESS -> {
                         binding.progressBar.visibility = View.GONE
                         resourceState.data?.let {
                             homeAdapter.submitData(it)
+
                         }
-                        Toast.makeText(requireContext(), "Success", Toast.LENGTH_LONG).show()
                     }
                     Status.LOADING -> {
                         binding.progressBar.visibility = View.VISIBLE
-                        Toast.makeText(requireContext(), "loading", Toast.LENGTH_LONG).show()
                     }
                     Status.ERROR -> {
                         binding.progressBar.visibility = View.GONE
-                        Toast.makeText(requireContext(), "error", Toast.LENGTH_LONG).show()
                     }
                 }
             }
         }
 
+        // search input
+        binding.userSearchInput.setOnKeyListener { p0, p1, p2 ->
+            p2?.let {
+                if (p1 == KeyEvent.KEYCODE_ENTER) {
+                    homeViewModel.mutableSearchData.value = binding.userSearchInput.text.toString()
+                    lifecycleScope.launchWhenStarted {
+                        collectData()
+                    }
+                }
+            }
+            true
+        }
+
+        lifecycleScope.launchWhenStarted {
+            collectData()
+        }
+
         return binding.root
     }
+
 
 
 }
