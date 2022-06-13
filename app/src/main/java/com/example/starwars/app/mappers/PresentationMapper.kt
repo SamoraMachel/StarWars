@@ -1,8 +1,10 @@
 package com.example.starwars.app.mappers
 
 import com.example.starwars.app.models.PeoplePresentation
+import com.example.starwars.app.models.SpeciePresentation
 import com.example.starwars.app.models.StarshipPresentation
 import com.example.starwars.domain.models.People
+import com.example.starwars.domain.models.Specie
 import com.example.starwars.domain.models.Starship
 
 class PresentationMapper {
@@ -40,6 +42,12 @@ class PresentationMapper {
                 peopleDomain.species as List<String?>,
                 peopleDomain.starships,
                 peopleDomain.vehicles
+            )
+        }
+
+        fun speciePresentationMapper(specieDomain : Specie) : SpeciePresentation {
+            return SpeciePresentation(
+
             )
         }
 

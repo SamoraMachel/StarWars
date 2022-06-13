@@ -1,4 +1,15 @@
 package com.example.starwars.app.models
 
-class FilmPresentation {
-}
+data class FilmPresentation (
+    val characters: List<String>,
+    val director: String,
+    val episode_id: Int,
+    val opening_crawl: String,
+    val planets: List<String>,
+    val producer: String,
+    val release_date: String,
+    val species: List<String>,
+    val starships: List<String>,
+    val title: String,
+    val vehicles: List<String>
+)

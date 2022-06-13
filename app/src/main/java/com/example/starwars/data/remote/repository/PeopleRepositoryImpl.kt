@@ -14,8 +14,7 @@ import kotlinx.coroutines.flow.Flow
 
 class PeopleRepositoryImpl() : PeopleRepository {
 
-    override fun fetchPeople(): Flow<PagingData<People>> {
-        val peopleApiService : PeopleApi = buildRetrofitService(PeopleApi::class.java)
+    override fun fetchPeople(): Flow<PagingData<People>> { val peopleApiService : PeopleApi = buildRetrofitService(PeopleApi::class.java)
         val peoplePagingData : BasePagingSource<People> = BasePagingSource(ApiClass.PEOPLE_API, peopleApiService)
 
         return Pager(
