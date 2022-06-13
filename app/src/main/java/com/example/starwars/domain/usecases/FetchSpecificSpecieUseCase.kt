@@ -7,7 +7,7 @@ import retrofit2.Response
 
 private typealias specificSpecieBaseUseCase = DataBaseCase<String, Flow<Specie>>
 
-class FetchSpecificSpecieUseCas(private val specieRepository: SpecieRepository) : specificSpecieBaseUseCase {
+class FetchSpecificSpecieUseCase(private val specieRepository: SpecieRepository) : specificSpecieBaseUseCase {
     override suspend fun execute(params : String): Flow<Specie> {
         return specieRepository.fetchSpecificSpecie(params)
     }

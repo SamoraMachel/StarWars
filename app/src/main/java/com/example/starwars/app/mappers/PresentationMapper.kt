@@ -1,9 +1,11 @@
 package com.example.starwars.app.mappers
 
 import com.example.starwars.app.models.PeoplePresentation
+import com.example.starwars.app.models.PlanetPresentation
 import com.example.starwars.app.models.SpeciePresentation
 import com.example.starwars.app.models.StarshipPresentation
 import com.example.starwars.domain.models.People
+import com.example.starwars.domain.models.Planet
 import com.example.starwars.domain.models.Specie
 import com.example.starwars.domain.models.Starship
 
@@ -47,7 +49,34 @@ class PresentationMapper {
 
         fun speciePresentationMapper(specieDomain : Specie) : SpeciePresentation {
             return SpeciePresentation(
+                specieDomain.average_height,
+                specieDomain.average_lifespan,
+                specieDomain.classification,
+                specieDomain.designation,
+                specieDomain.eye_colors,
+                specieDomain.films,
+                specieDomain.hair_colors,
+                specieDomain.homeworld,
+                specieDomain.language,
+                specieDomain.name,
+                specieDomain.people,
+                specieDomain.skin_colors
+            )
+        }
 
+        fun planetPresentationMapper(planetDomain : Planet) : PlanetPresentation {
+            return PlanetPresentation(
+                planetDomain.climate,
+                planetDomain.diameter,
+                planetDomain.films,
+                planetDomain.gravity,
+                planetDomain.name,
+                planetDomain.orbital_period,
+                planetDomain.population,
+                planetDomain.residents,
+                planetDomain.rotation_period,
+                planetDomain.surface_water,
+                planetDomain.terrain
             )
         }
 
