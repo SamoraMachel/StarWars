@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 interface SpecieRepository {
-    fun fetchSpecificSpecie(url : String) : Flow<Specie>
+    fun fetchSpecificSpecie(url : String) : Response<Specie>
 }

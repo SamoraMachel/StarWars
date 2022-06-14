@@ -5,9 +5,10 @@ import com.example.starwars.data.remote.api.buildRetrofitService
 import com.example.starwars.domain.models.Planet
 import com.example.starwars.domain.repository.PlanetRepository
 import kotlinx.coroutines.flow.Flow
+import retrofit2.Response
 
 class PlanetRepositoryImp : PlanetRepository {
-    override fun fetchPlanet(url: String): Flow<Planet> {
+    override fun fetchPlanet(url: String): Response<Planet> {
         val planetService : PlanetApi = buildRetrofitService(PlanetApi::class.java)
         return planetService.fetchSpecificPlanet(url)
     }

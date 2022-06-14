@@ -10,9 +10,11 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdk 32
 
+    dataBinding {
+        enabled = true
+    }
     buildFeatures {
         viewBinding true
-        dataBinding true
     }
 
     defaultConfig {

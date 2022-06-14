@@ -2,7 +2,9 @@ package com.example.starwars.domain.repository
 
 import com.example.starwars.domain.models.Planet
 import kotlinx.coroutines.flow.Flow
+import retrofit2.Response
 
 interface PlanetRepository {
-    fun fetchPlanet(url : String) : Flow<Planet>
+    fun fetchPlanet(url : String) : Response<Planet>
+
 }

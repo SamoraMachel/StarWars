@@ -55,7 +55,6 @@ class HomeScreen : Fragment() {
                         binding.progressBar.visibility = View.GONE
                         resourceState.data?.let {
                             homeAdapter.submitData(it)
-
                         }
                     }
                     Status.LOADING -> {

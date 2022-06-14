@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.starwars.R
 import com.example.starwars.app.models.PeoplePresentation
 import com.example.starwars.app.models.PlanetPresentation
+import com.example.starwars.app.models.SpeciePresentation
 import com.example.starwars.app.ui.viewmodels.DetailScreenViewModel
 import com.example.starwars.app.utils.Resource
 import com.example.starwars.app.utils.Status
@@ -32,19 +33,14 @@ class DetailScreen : AppCompatActivity() {
 
         binding.character = character_data
 
-
-        binding.planet = viewModel.planetData
-//        binding
-
-        fun <T> collectData(collection : LiveData<Resource<T>>, view : View) {
+        fun <T> collectData(collection : LiveData<Resource<T>>, function : (T) -> Unit) {
             lifecycleScope.launchWhenStarted {
                 collection.observe(this@DetailScreen) {
                     when(it.status) {
                         Status.SUCCESS -> {
-
+                            function
                         }
                         else -> {
-                            view.
                         }
                     }
 
@@ -52,7 +48,14 @@ class DetailScreen : AppCompatActivity() {
             }
         }
 
-        collectData<PlanetPresentation>(viewModel.planetData, binding.)
+        collectData<PlanetPresentation>(viewModel.planetData) {
+            binding.planet = it
+        }
+
+        collectData<SpeciePresentation>(viewModel.specieData) {
+            binding.specie = it
+        }
+
     }
 
 

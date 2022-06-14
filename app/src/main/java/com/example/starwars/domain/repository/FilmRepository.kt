@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 interface FilmRepository {
-    fun fetchSpecificFilm(url : String) : Flow<Film>
+    fun fetchSpecificFilm(url : String) : Response<Film>
 }
