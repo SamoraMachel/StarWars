@@ -35,19 +35,9 @@ For the successful completion of the application I used the various libraries
 - OkHttp interceptor
 
 ## App Design
-<div>
-    <div style="padding: 30px; background-color: #E5E4E2; display: inline-block; margin: 1px;"> 
-        <h5> Home Screen </h5>
-        <img src="./media/first_screen.png" width=200/>
-    </div >  
-    <div style="padding: 30px; background-color: #E5E4E2; display: inline-block; margin: 1px;"> 
-        <h5> Detail Screen </h5>
-        <img src="./media/second_screen.png" width=200/>
-    </div>  
-    <div style="padding: 30px; background-color: #E5E4E2; display: inline-block; margin: 1px;"> 
-        <h5> Search Screen </h5>
-        <img src="./media/search_screen.png" width=200/>
-    </div>
-</div>
+> <img src="./media/first_screen.png" width=200/>
+> .<img src="./media/second_screen.png" width=200/>
+> .<img src="./media/search_screen.png" width=200/>
+
 
 
