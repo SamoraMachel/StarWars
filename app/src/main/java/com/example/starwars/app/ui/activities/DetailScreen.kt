@@ -38,7 +38,10 @@ class DetailScreen : AppCompatActivity() {
                 collection.observe(this@DetailScreen) {
                     when(it.status) {
                         Status.SUCCESS -> {
-                            function
+                            it.data?.let { dataCollected -> function.invoke(dataCollected) }
+                        }
+                        Status.ERROR -> {
+                            Toast.makeText(applicationContext, it.message, Toast.LENGTH_LONG).show()
                         }
                         else -> {
                         }
