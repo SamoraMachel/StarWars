@@ -8,7 +8,7 @@ data class SpeciePresentation(
     val eye_colors: String,
     val films: List<String>,
     val hair_colors: String,
-    val homeworld: String,
+    val homeworld: String?,
     val language: String,
     val name: String,
     val people: List<String>,

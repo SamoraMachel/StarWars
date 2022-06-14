@@ -1,5 +1,6 @@
 package com.example.starwars.app.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,9 @@ import com.example.starwars.R
 import com.example.starwars.app.models.FilmPresentation
 import com.example.starwars.databinding.FilmDetailBinding
 
-class DetailFilmAdapter(private val filmDataList : List<FilmPresentation>) : RecyclerView.Adapter<DetailFilmAdapter.DetailViewHolder>() {
+class DetailFilmAdapter : RecyclerView.Adapter<DetailFilmAdapter.DetailViewHolder>() {
+    private var filmDataList : MutableList<FilmPresentation> = mutableListOf()
+
     class DetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private val binding = FilmDetailBinding.bind(itemView)
 
@@ -32,5 +35,15 @@ class DetailFilmAdapter(private val filmDataList : List<FilmPresentation>) : Rec
 
     override fun getItemCount(): Int {
         return filmDataList.size
+    }
+
+    fun setDataList(dataList : List<FilmPresentation>) {
+        filmDataList = dataList as MutableList<FilmPresentation>
+        notifyDataSetChanged()
+    }
+
+    fun addData(film : FilmPresentation) {
+        filmDataList.add(film)
+        notifyDataSetChanged()
     }
 }

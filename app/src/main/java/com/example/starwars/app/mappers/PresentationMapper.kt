@@ -1,13 +1,7 @@
 package com.example.starwars.app.mappers
 
-import com.example.starwars.app.models.PeoplePresentation
-import com.example.starwars.app.models.PlanetPresentation
-import com.example.starwars.app.models.SpeciePresentation
-import com.example.starwars.app.models.StarshipPresentation
-import com.example.starwars.domain.models.People
-import com.example.starwars.domain.models.Planet
-import com.example.starwars.domain.models.Specie
-import com.example.starwars.domain.models.Starship
+import com.example.starwars.app.models.*
+import com.example.starwars.domain.models.*
 
 class PresentationMapper {
     companion object {
@@ -77,6 +71,22 @@ class PresentationMapper {
                 planetDomain.rotation_period,
                 planetDomain.surface_water,
                 planetDomain.terrain
+            )
+        }
+
+        fun filmPresentationMapper(filmDomain : Film) : FilmPresentation {
+            return FilmPresentation(
+                filmDomain.characters,
+                filmDomain.director,
+                filmDomain.episode_id,
+                filmDomain.opening_crawl,
+                filmDomain.planets,
+                filmDomain.producer,
+                filmDomain.release_date,
+                filmDomain.species,
+                filmDomain.starships,
+                filmDomain.title,
+                filmDomain.vehicles
             )
         }
 

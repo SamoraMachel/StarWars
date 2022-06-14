@@ -36,9 +36,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:fontFamily="sans-serif-medium"
+                    android:text="@{film.title}"
                     android:textColor="@color/black"
                     android:textSize="18dp"
-                    android:text="@{film.title}"
                     tools:text="A New Hope" />
 
                 <TextView
