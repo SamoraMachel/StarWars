@@ -35,9 +35,9 @@ For the successful completion of the application I used the various libraries
 - OkHttp interceptor
 
 ## App Design
-> <img src="./media/first_screen.png" width=200/>
-> .<img src="./media/second_screen.png" width=200/>
-> .<img src="./media/search_screen.png" width=200/>
+.<img src="./media/first_screen.png" width=200/>
+<img src="./media/second_screen.png" width=200/>
+<img src="./media/search_screen.png" width=200/>
 
 
 
