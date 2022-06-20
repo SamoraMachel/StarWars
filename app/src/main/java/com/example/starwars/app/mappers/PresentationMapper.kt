@@ -17,7 +17,7 @@ class PresentationMapper {
                 peoplePresentation.mass,
                 peoplePresentation.name,
                 peoplePresentation.skinColor,
-                peoplePresentation.species as List<String?>,
+                peoplePresentation.species,
                 peoplePresentation.starships,
                 peoplePresentation.vehicles
             )
